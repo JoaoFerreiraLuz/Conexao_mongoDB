@@ -1,0 +1,25 @@
+'show databbases' (exibir data bases);
+'show collectons' (exibir collections "tipo tabelas");
+'db.{collection}.find()' (exibir conteudo da collection);
+'db.{collection.find().pretty()}' (apresentar organizado);
+
+
+classe para trabalhar com dados{
+
+            //instanciando o banco de dados
+            MongoClient cliente = new MongoClient();
+
+            //definindo o banco que vou utilizar
+            MongoDatabase bancoDados = cliente.getDatabase("test");
+
+            // definindo a collection quer vou utilizar
+            MongoCollection<Document> alunos = bancoDados.getCollection("alunos");
+
+            // vai trazer o primeiro aluno.
+            //O tipo é 'Document' pois o Mongo guarda documentos (json)
+            Document aluno = alunos.find().first();
+
+            //fechar conexao
+            cliente.close();
+
+}
